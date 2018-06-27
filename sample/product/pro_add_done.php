@@ -34,18 +34,24 @@ $post=sanitize($_POST);
 $pro_name=$post['name'];
 $pro_price=$post['price'];
 $pro_gazou_name=$post['gazou_name'];
+$pro_type=$post['type'];
+$pro_seisan=$post['seisan'];
+$pro_pricelevel=$post['pricelevel'];
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+$dsn='mysql:dbname=shop2;host=localhost;charset=utf8';
 $user='root';
 $password='';
 $dbh=new PDO($dsn,$user,$password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-$sql='INSERT INTO mst_product(name,price,gazou) VALUES (?,?,?)';
+$sql='INSERT INTO mst_product(name,price,gazou,type,seisan,pricelevel) VALUES (?,?,?,?,?,?)';
 $stmt=$dbh->prepare($sql);
 $data[]=$pro_name;
 $data[]=$pro_price;
 $data[]=$pro_gazou_name;
+$data[]=$pro_type;
+$data[]=$pro_seisan;
+$data[]=$pro_pricelevel;
 $stmt->execute($data);
 
 $dbh=null;

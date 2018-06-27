@@ -23,6 +23,10 @@ else
 </head>
 <body>
 
+<?php
+require_once('../common/common.php');
+?>
+
 商品追加<br />
 <br />
 <form method="post" action="pro_add_check.php" enctype="multipart/form-data">
@@ -32,6 +36,9 @@ else
 <input type="text" name="price" style="width:50px"><br />
 画像を選んでください。<br />
 <input type="file" name="gazou" style="width:400px"><br />
+<?php pulldown_type(); ?>&nbsp;
+<?php pulldown_seisan(); ?>&nbsp;
+<?php pulldown_pricelevel(); ?>
 <br />
 <input type="button" onclick="history.back()" value="戻る">
 <input type="submit" value="ＯＫ">

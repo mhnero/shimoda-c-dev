@@ -31,10 +31,10 @@ require_once('../common/common.php');
 
 商品一覧<br />
 <br />
-<form method="post" action="shop_list.php">
+<form method="post" action="shop_list.php"><br/>
 <?php pulldown_type(); ?>&nbsp;
 <?php pulldown_seisan(); ?>&nbsp;
-<?php pulldown_pricelevel(); ?>
+<?php pulldown_pricelevel(); ?><br/><br/>
 <input type="hidden" name="search" value="search"/><br />
 <input type="text" name="keyword" style="width:300px">
 <input type="submit"  value="検索" >
@@ -44,6 +44,7 @@ require_once('../common/common.php');
 
 try
 {
+//検索したことがない場合
 	if(isset($_POST['search'])==false)
 	{
 //$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
@@ -62,7 +63,6 @@ $dbh=null;
 
 
 
-
 while(true)
 {
 	$rec=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -76,15 +76,19 @@ while(true)
 	print '</a>';
 	print '<br />';
 }
+
+
 print '<br />';
 print '<a href="shop_cartlook.php">カートを見る</a><br />';
 }
 else{
-
+//検索したことがある場合
 $type=$_POST['type'];
 $seisan=$_POST['seisan'];
 $pricelevel=$_POST['pricelevel'];
 $keyword=$_POST['keyword'];
+
+
 //$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
 /*$dsn='mysql:dbname=shop;host=localhost;charset=utf8';*/
 $dsn='mysql:dbname=shop2;host=localhost;charset=utf8';
@@ -102,14 +106,46 @@ $stmt->execute();
 
 $dbh=null;
 
+$_x=0;
 
 
-if($sql!==0){
+
+if($keyword==''){
+
+	while(true)
+	{
+		$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+		if($rec==false)
+		{
+			if($_x==0){
+				print '該当の商品はありません';	
+			}
+			break;
+		}
+		if((strpos($rec['type'],$type)!==false)
+		&&(strpos($rec['seisan'],$seisan)!==false)
+		&&(strpos($rec['pricelevel'],$pricelevel)!==false))
+		{
+		print '<a href="shop_product.php?procode='.$rec['code'].'">';
+		print $rec['name'].'─';
+		print $rec['price'].'円';
+		print '</a>';
+		print '<br />';
+		$_x=1;
+		}
+	}
+}
+
+else{
+	
 while(true)
 {
 	$rec=$stmt->fetch(PDO::FETCH_ASSOC);
 	if($rec==false)
 	{
+		if($_x==0){
+			print '該当の商品はありません';			
+		}
 		break;
 	}
 	if((strpos($rec['type'],$type)!==false)
@@ -118,15 +154,13 @@ while(true)
 	&&(strpos($rec['name'],$keyword)!==false))
 	{
 	print '<a href="shop_product.php?procode='.$rec['code'].'">';
-	print $rec['name'].'---';
+	print $rec['name'].'─';
 	print $rec['price'].'円';
 	print '</a>';
 	print '<br />';
+	$_x=1;
 	}
 }
-}
-else{
-	print '該当の商品はありません';
 }
 
 print '<br />';

@@ -103,31 +103,31 @@ function pulldown_day()
 function pulldown_type()
 {
 	print '<select name="type">';
-	print '<option value="">種類</option>';
-	print '<option value="ケース">ケース</option>';
-	print '<option value="液晶保護フィルム">液晶保護フィルム</option>';
-	print '<option value="イヤホンジャック">イヤホンジャック</option>';
+	print '<option value=" ">種類(指定なし)</option>';
+	print '<option value="ケース ">ケース</option>';
+	print '<option value="液晶保護フィルム ">液晶保護フィルム</option>';
+	print '<option value="イヤホンジャック ">イヤホンジャック</option>';
 	print '</select>';
 }
 
 
 function pulldown_seisan()
 {
-	print '<select name="seisan" style=width:80px;>';
-	print '<option value="">生産国</option>';
-	print '<option value="日本">日本</option>';
-	print '<option value="中国">中国</option>';
-	print '<option value="米国">米国</option>';
+	print '<select name="seisan" style=width:130px;>';
+	print '<option value=" ">生産国(指定なし)</option>';
+	print '<option value="日本 ">日本</option>';
+	print '<option value="中国 ">中国</option>';
+	print '<option value="米国 ">米国</option>';
 	print '</select>';
 }
 
 function pulldown_pricelevel()
 {
-	print '<select name="pricelevel" style=width:120px;>';
-	print '<option value="">価格帯</option>';
-	print '<option value="3000円～">3000円～</option>';
-	print '<option value="1500～2999円">1500～2999円</option>';
-	print '<option value="～1499円">～1499円</option>';
+	print '<select name="pricelevel" style=width:130px;>';
+	print '<option value=" ">価格帯(指定なし)</option>';
+	print '<option value="3000円～ ">3000円～</option>';
+	print '<option value="1500～2999円 ">1500～2999円</option>';
+	print '<option value="～1499円 ">～1499円</option>';
 	print '</select>';
 }
 
