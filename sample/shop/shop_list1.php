@@ -21,7 +21,7 @@ else
 <html>
 <head>
 <meta charset="UTF-8">
-<title>勉強会</title>
+<title>ろくまる農園</title>
 </head>
 <body>
 

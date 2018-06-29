@@ -12,34 +12,68 @@
 
 <?php
 
+
+$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+$user='root';
+$password='';
+
 try
 {
+
+$dbh=new PDO($dsn,$user,$password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+$sql='select*from dat_sales_product';
+$stmt=$dbh->prepare($sql);
+$data=array();
+
+while($rec=$stmt->fetch(PDO::FETCH_ASSOC)){
+	print htmlspecialchars($rec['code_sales']);
+}
+	
+
 
 require_once('../common/common.php');
 
 $post=sanitize($_POST);
 
-//$onamae=$post['onamae'];
-//$email=$post['email'];
+$onamae=$post['onamae'];
+$email=$post['email'];
 $postal1=$post['postal1'];
 $postal2=$post['postal2'];
 $address=$post['address'];
 $tel=$post['tel'];
 $chumon=$post['chumon'];
-$pass=$post['pass'];
+$pass1=$post['pass1'];
+$pass2=$post['pass2'];
 $danjo=$post['danjo'];
 $birth=$post['birth'];
+$lastmembercode=$rec['dat_sales_product'];
 
-print $onamae.'様<br />';
+//print $onamae.'様<br />';
 print 'ご注文ありがとうござました。<br />';
-print $email.'にメールを送りましたのでご確認ください。<br />';
-print '商品は以下の住所に発送させていただきます。<br />';
-print $postal1.'-'.$postal2.'<br />';
-print $address.'<br />';
-print $tel.'<br />';
+//print $email.'にメールを送りましたのでご確認ください。<br />';
+print 'お近くのファミリーマートでお支払い頂けます。<br />';
+$nextWeek=time()+(7*24*60*60);
+echo'お支払い期限:'.date('Y-m-d',$nextWeek)."\n";
+print '<br />';
+
+//print 'お支払い期限:平成30年8月20日 23:59<br />';
+print '企業コード:50050<br />';
+
+
+print '注文番号:';
+//echo sha1(uniqid(null,true));
+//echo uniqid();
+echo str_pad($lastmembercode,12,0,STR_PAD_LEFT);
+print '<br />';
+print '引き続きショッピングをお楽しみ下さい。<br />';
+//print $postal1.'-'.$postal2.'<br />';
+//print $address.'<br />';
+//print $tel.'<br />';
 
 $honbun='';
-$honbun.=$onamae."様\n\nこのたびはご注文ありがとうございました。\n";
+$honbun.=$onamae."様\n\nこの度はご注文ありがとうございました。\n";
 $honbun.="\n";
 $honbun.="ご注文商品\n";
 $honbun.="--------------------\n";
@@ -146,7 +180,7 @@ for($i=0;$i<$max;$i++)
 
 $dbh=null;
 
-if($chumon=='chumontouroku')
+/*if($chumon=='chumontouroku')
 {
 	print '会員登録が完了いたしました。<br />';
 	print '次回からメールアドレスとパスワードでログインしてください。<br />';
@@ -168,7 +202,7 @@ if($chumon=='chumontouroku')
 	$honbun.="次回からメールアドレスとパスワードでログインしてください。\n";
 	$honbun.="ご注文が簡単にできるようになります。\n";
 	$honbun.="\n";
-}
+}*/
 
 $honbun.="□□□□□□□□□□□□□□\n";
 $honbun.="　～安心野菜のろくまる農園～\n";
@@ -204,7 +238,7 @@ catch (Exception $e)
 ?>
 
 <br />
-<a href="shop_list.php">商品画面へ</a>
+<a href="shop_list.php">OK</a>
 
 </body>
 </html>

@@ -19,27 +19,28 @@ require_once('../common/common.php');
 
 $post=sanitize($_POST);
 
-//$onamae=$post['onamae'];
-//$email=$post['email'];
+$onamae=$post['onamae'];
+$email=$post['email'];
 $postal1=$post['postal1'];
 $postal2=$post['postal2'];
 $address=$post['address'];
 $tel=$post['tel'];
 $chumon=$post['chumon'];
-$pass=$post['pass'];
+$pass1=$post['pass1'];
+$pass2=$post['pass2'];
 $danjo=$post['danjo'];
 $birth=$post['birth'];
 
-print $onamae.'様<br />';
+//print $onamae.'様<br />';
 print 'ご注文ありがとうござました。<br />';
-print $email.'にメールを送りましたのでご確認ください。<br />';
-print '商品は以下の住所に発送させていただきます。<br />';
-print $postal1.'-'.$postal2.'<br />';
-print $address.'<br />';
-print $tel.'<br />';
+//print $email.'にメールを送りましたのでご確認ください。<br />';
+print '引き続きショッピングをお楽しみください。<br />';
+//print $postal1.'-'.$postal2.'<br />';
+//print $address.'<br />';
+//print $tel.'<br />';
 
 $honbun='';
-$honbun.=$onamae."様\n\nこのたびはご注文ありがとうございました。\n";
+$honbun.=$onamae."様\n\nこの度はご注文ありがとうございました。\n";
 $honbun.="\n";
 $honbun.="ご注文商品\n";
 $honbun.="--------------------\n";
@@ -128,6 +129,29 @@ $stmt->execute();
 $rec=$stmt->fetch(PDO::FETCH_ASSOC);
 $lastcode=$rec['LAST_INSERT_ID()'];
 
+
+
+
+/*$sql='INSERT INTO mst_product3 (code,name,price,kazu,shokei) VALUES (?,?,?,?,?)';
+$stmt=$dbh->prepare($sql);
+$data=array();
+$data[]=$lastmembercode;
+$data[]=$name;
+$data[]=$price;
+$data[]=$kazu;
+$data[]=$shokei;
+//$stmt->execute($data);
+
+$sql='SELECT LAST_INSERT_ID()';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
+$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+$lastcode=$rec['LAST_INSERT_ID()'];*/
+
+
+
+
+
 for($i=0;$i<$max;$i++)
 {
 	$sql='INSERT INTO dat_sales_product (code_sales,code_product,price,quantity) VALUES (?,?,?,?)';
@@ -201,10 +225,11 @@ catch (Exception $e)
 	exit();
 }
 
+
 ?>
 
 <br />
-<a href="shop_list.php">商品画面へ</a>
+<a href="shop_list.php">OK</a>
 
 </body>
 </html>
