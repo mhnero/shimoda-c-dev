@@ -24,7 +24,10 @@ else
 </head>
 <body>
 
-<?php	$pro_code=$_GET['procode']?>
+<?php
+require_once('../common/common.php');
+$pro_code=$_GET['procode']
+?>
 
 レビュー登録<br />
 <br />
@@ -32,7 +35,7 @@ else
 名前を入力してください。<br />
 <input type="text" name="name" style="width:80px"><br />
 評価を入れてください(1～5)<br />
-<input type="text" name="score" style="width:10px"><br />
+<?php pulldown_review(); ?><br/>
 内容を入力してください。<br />
 <textarea name="comment" rows="2"cols="50"wrap="soft">
 </textarea>

@@ -131,4 +131,16 @@ function pulldown_pricelevel()
 	print '</select>';
 }
 
+function pulldown_review()
+{
+	print '<select name="score" style=width:40px;>';
+	print '<option value=" "></option>';
+	print '<option value="5">5</option>';
+	print '<option value="4">4</option>';
+	print '<option value="3">3</option>';
+	print '<option value="2">2</option>';
+	print '<option value="1">1</option>';
+	print '</select>';
+}
+
 ?>
