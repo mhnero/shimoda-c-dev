@@ -21,7 +21,7 @@ else
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ろくまる農園</title>
+<title>アクセサリ販売システム</title>
 </head>
 <body>
 
