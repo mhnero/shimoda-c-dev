@@ -51,11 +51,11 @@ $birth=$post['birth'];
 $lastmembercode=$rec['dat_sales_product'];
 
 //print $onamae.'様<br />';
-print 'ご注文ありがとうござました。<br />';
+print '<br/>ご注文ありがとうござました。<br />';
 //print $email.'にメールを送りましたのでご確認ください。<br />';
 print 'お近くのファミリーマートでお支払い頂けます。<br />';
 $nextWeek=time()+(7*24*60*60);
-echo'お支払い期限:'.date('Y-m-d',$nextWeek)."\n";
+echo'お支払い期限:'.date('Y-m-d',$nextWeek).'　23:59'."\n";
 print '<br />';
 
 //print 'お支払い期限:平成30年8月20日 23:59<br />';

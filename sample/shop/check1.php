@@ -162,7 +162,7 @@ if($chumon=='chumontouroku')
 	
 	$Gokei=0;
 			print '<br/>';
-for($i=0;$i<$max;$i++)
+	for($i=0;$i<$max;$i++)
 	{
 		$sql='SELECT name,price FROM mst_product WHERE code=?';
 		$stmt=$dbh->prepare($sql);
@@ -180,19 +180,19 @@ for($i=0;$i<$max;$i++)
 		print $name.'　';
 		print '<br/>';
 		print '¥';
-		print $price.'円 - ';
+		print $price.' - ';
 		print '数量:';				
 		//print '  ';
-		print $suryo.'---';
+		print $suryo.'<br/>';
 		//print '';
-		print $shokei.'円<br/>';
+		//print $shokei.'円<br/>';
 		//print '';
 		
 		
 	}
 	print '<br/>';
 	print '合計￥';
-	print $Gokei.'円<br/>';
+	print $Gokei.'<br/><br/>';
 	
 
 

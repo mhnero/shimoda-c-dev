@@ -102,7 +102,7 @@ else
 		print $name.'　';
 		print '<br/>';
 		print '¥';
-		print $price.'円 - ';
+		print $price.' - ';
 		print '数量:';				
 		//print '  ';
 		print $suryo.'<br/>';
