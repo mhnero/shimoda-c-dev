@@ -3,7 +3,7 @@ session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['member_login'])==false)
 {
-	print 'ようこそゲスツ様　';
+	print 'ようこそゲスト様　';
 	print '<a href="member_login.html">会員ログイン</a><br />';
 	print '<br />';
 }
@@ -49,7 +49,7 @@ try
 	{
 //$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
 /*$dsn='mysql:dbname=shop;host=localhost;charset=utf8';*/
-$dsn='mysql:dbname=shop2;host=localhost;charset=utf8';
+$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
 $user='root';
 $password='';
 $dbh=new PDO($dsn,$user,$password);
@@ -431,7 +431,7 @@ else
 
 $_x=0;
 
-$dsn='mysql:dbname=shop2;host=localhost;charset=utf8';
+$dsn='mysql:dbname=shop1;host=localhost;charset=utf8';
 $user='root';
 $password='';
 $dbh=new PDO($dsn,$user,$password);

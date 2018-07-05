@@ -17,6 +17,9 @@ try
 
 require_once('../common/common.php');
 
+if(isset($_SESSION["member_login"])==false)
+{
+
 $post=sanitize($_POST);
 
 $onamae=$post['onamae'];
@@ -31,6 +34,19 @@ $pass2=$post['pass2'];
 $danjo=$post['danjo'];
 $birth=$post['birth'];
 
+}
+else
+{
+	$post=sanitize($_POST);
+
+	$onamae=$post['onamae'];
+	$email=$post['email'];
+	$postal1=$post['postal1'];
+	$postal2=$post['postal2'];
+	$address=$post['address'];
+	$tel=$post['tel'];
+		
+}
 //print $onamae.'様<br />';
 print 'ご注文ありがとうござました。<br />';
 //print $email.'にメールを送りましたのでご確認ください。<br />';
