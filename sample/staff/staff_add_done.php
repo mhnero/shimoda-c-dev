@@ -34,11 +34,21 @@ $post=sanitize($_POST);
 $staff_name=$post['name'];
 $staff_pass=$post['pass'];
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-$user='root';
-$password='';
-$dbh=new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+if (DEBUG) {
+	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+	$user='root';
+	$password='';
+	$dbh=new PDO($dsn,$user,$password);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	}
+	else{
+	$dbServer = '127.0.0.1';
+	$dbUser = $_SERVER['MYSQL_USER'];
+	$dbPass = $_SERVER['MYSQL_PASSWORD'];
+	$dbName = $_SERVER['MYSQL_DB'];
+	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+	$dbh = new PDO($dsn, $dbUser, $dbPass);
+	}
 
 $sql='INSERT INTO mst_staff (name,password) VALUES (?,?)';
 $stmt=$dbh->prepare($sql);

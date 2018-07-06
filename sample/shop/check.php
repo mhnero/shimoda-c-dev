@@ -83,12 +83,21 @@ if($okflg==true)
 	}
 
 	
-	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-	$user='root';
-	$password='';
-	$dbh=new PDO($dsn,$user,$password);
-	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	
+	if (DEBUG) {
+		$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+		$user='root';
+		$password='';
+		$dbh=new PDO($dsn,$user,$password);
+		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		}
+		else{
+		$dbServer = '127.0.0.1';
+		$dbUser = $_SERVER['MYSQL_USER'];
+		$dbPass = $_SERVER['MYSQL_PASSWORD'];
+		$dbName = $_SERVER['MYSQL_DB'];
+		$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+		$dbh = new PDO($dsn, $dbUser, $dbPass);
+		}
 	$Gokei=0;
 			print '<br/>';
 	for($i=0;$i<$max;$i++)
@@ -243,11 +252,21 @@ $address=$post['address'];
 $tel=$post['tel'];
 
 
+if (DEBUG) {
 	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
 	$user='root';
 	$password='';
 	$dbh=new PDO($dsn,$user,$password);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	}
+	else{
+	$dbServer = '127.0.0.1';
+	$dbUser = $_SERVER['MYSQL_USER'];
+	$dbPass = $_SERVER['MYSQL_PASSWORD'];
+	$dbName = $_SERVER['MYSQL_DB'];
+	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+	$dbh = new PDO($dsn, $dbUser, $dbPass);
+	}
 	
 	$Gokei=0;
 			print '<br/>';
