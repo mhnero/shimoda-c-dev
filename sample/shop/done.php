@@ -17,6 +17,9 @@ try
 
 require_once('../common/common.php');
 
+if(isset($_SESSION["member_login"])==false)
+{
+
 $post=sanitize($_POST);
 
 $onamae=$post['onamae'];
@@ -31,6 +34,19 @@ $pass2=$post['pass2'];
 $danjo=$post['danjo'];
 $birth=$post['birth'];
 
+}
+else
+{
+	$post=sanitize($_POST);
+
+	$onamae=$post['onamae'];
+	$email=$post['email'];
+	$postal1=$post['postal1'];
+	$postal2=$post['postal2'];
+	$address=$post['address'];
+	$tel=$post['tel'];
+		
+}
 //print $onamae.'様<br />';
 print 'ご注文ありがとうござました。<br />';
 //print $email.'にメールを送りましたのでご確認ください。<br />';
@@ -49,11 +65,21 @@ $cart=$_SESSION['cart'];
 $kazu=$_SESSION['kazu'];
 $max=count($cart);
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-$user='root';
-$password='';
-$dbh=new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+if (DEBUG) {
+	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+	$user='root';
+	$password='';
+	$dbh=new PDO($dsn,$user,$password);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	}
+	else{
+	$dbServer = '127.0.0.1';
+	$dbUser = $_SERVER['MYSQL_USER'];
+	$dbPass = $_SERVER['MYSQL_PASSWORD'];
+	$dbName = $_SERVER['MYSQL_DB'];
+	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+	$dbh = new PDO($dsn, $dbUser, $dbPass);
+	}
 
 for($i=0;$i<$max;$i++)
 {

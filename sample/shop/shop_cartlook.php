@@ -49,11 +49,21 @@ if($max==0)
 	exit();
 }
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-$user='root';
-$password='';
-$dbh=new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+if (DEBUG) {
+	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+	$user='root';
+	$password='';
+	$dbh=new PDO($dsn,$user,$password);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	}
+	else{
+	$dbServer = '127.0.0.1';
+	$dbUser = $_SERVER['MYSQL_USER'];
+	$dbPass = $_SERVER['MYSQL_PASSWORD'];
+	$dbName = $_SERVER['MYSQL_DB'];
+	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+	$dbh = new PDO($dsn, $dbUser, $dbPass);
+	}
 
 foreach($cart as $key=>$val)
 {
@@ -123,7 +133,7 @@ catch(Exception $e)
 <?php
 	if(isset($_SESSION["member_login"])==true)
 	{
-		print '<a href="shop_kantan_check.php">会員かんたん注文へ進む</a><br />';
+		print '<a href="shop_form_check_.php">会員かんたん注文へ進む</a><br />';
 	}
 ?>
 

@@ -4,8 +4,8 @@ session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
-	print 'ƒƒOƒCƒ“‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB<br />';
-	print '<a href="../staff_login/staff_login.html">ƒƒOƒCƒ“‰æ–Ê‚Ö</a>';
+	print 'ãƒ­ã‚°ã‚¤ãƒ³ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚<br />';
+	print '<a href="../staff_login/staff_login.html">ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ã¸</a>';
 	exit();
 }
 
