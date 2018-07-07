@@ -44,6 +44,8 @@ require_once('../common/common.php');
 
 try
 {
+	require_once('../common/common.php');
+
 //検索したことがない場合
 	if(isset($_POST['search'])==false)
 	{

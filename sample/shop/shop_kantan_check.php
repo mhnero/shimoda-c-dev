@@ -18,6 +18,9 @@ if(isset($_SESSION['member_login'])==false)
 <body>
 
 <?php
+require_once('../common/common.php');
+
+
 $code=$_SESSION['member_code'];
 
 if (DEBUG) {

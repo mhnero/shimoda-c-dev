@@ -29,6 +29,7 @@ else
 
 try
 {
+	require_once('../common/common.php');
 
 $pro_code=$_GET['procode'];
 

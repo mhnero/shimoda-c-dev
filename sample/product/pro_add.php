@@ -35,10 +35,10 @@ require_once('../common/common.php');
 価格を入力してください。<br />
 <input type="text" name="price" style="width:50px"><br />
 画像を選んでください。<br />
-<input type="file" name="gazou" style="width:400px"><br />
+<input type="file" name="gazou" style="width:400px"><br /><br/>
 <?php pulldown_type(); ?>&nbsp;
 <?php pulldown_seisan(); ?>&nbsp;
-<?php pulldown_pricelevel(); ?>
+<?php pulldown_pricelevel(); ?><br/>
 <br />
 <input type="button" onclick="history.back()" value="戻る">
 <input type="submit" value="ＯＫ">

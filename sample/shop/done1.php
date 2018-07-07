@@ -16,6 +16,7 @@
 
 try
 {
+	require_once('../common/common.php');
 
 	if (DEBUG) {
 		$dsn='mysql:dbname=shop;host=localhost;charset=utf8';

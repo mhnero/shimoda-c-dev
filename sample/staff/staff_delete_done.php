@@ -27,6 +27,7 @@ else
 
 try
 {
+	require_once('../common/common.php');
 
 $staff_code=$_POST['code'];
 

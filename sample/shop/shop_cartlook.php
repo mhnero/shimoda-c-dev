@@ -29,6 +29,7 @@ else
 
 try
 {
+	require_once('../common/common.php');
 
 if(isset($_SESSION['cart'])==true)
 {

@@ -25,8 +25,11 @@ else
 
 <?php
 
+
 try
 {
+	require_once('../common/common.php');
+
 
 $pro_code=$_POST['code'];
 $pro_gazou_name=$_POST['gazou_name'];
