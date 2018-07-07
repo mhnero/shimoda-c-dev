@@ -121,13 +121,14 @@ $lastcode=$rec['LAST_INSERT_ID()'];
 
 for($i=0;$i<$max;$i++)
 {
-	$sql='INSERT INTO dat_sales_product (code_sales,code_product,price,quantity) VALUES (?,?,?,?)';
+	$sql='INSERT INTO dat_sales_product (code_sales,code_product,price,quantity,paycode) VALUES (?,?,?,?,?)';
 	$stmt=$dbh->prepare($sql);
 	$data=array();
 	$data[]=$lastcode;
 	$data[]=$cart[$i];
 	$data[]=$kakaku[$i];
 	$data[]=$kazu[$i];
+	$data[]=$str;
 	$stmt->execute($data);
 }
 
