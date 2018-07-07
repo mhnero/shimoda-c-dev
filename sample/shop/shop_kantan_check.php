@@ -63,7 +63,7 @@ print '電話番号<br />';
 print $tel;	
 print '<br /><br />';
 
-print '<form method="post" action="shop_kantan_done.php">';
+print '<form method="post" action="shop_kantan_check_.php">';
 print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 print '<input type="hidden" name="email" value="'.$email.'">';
 print '<input type="hidden" name="postal1" value="'.$postal1.'">';

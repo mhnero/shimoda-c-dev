@@ -1,20 +1,6 @@
 <?php
 session_start();
 session_regenerate_id(true);
-/*if(isset($_SESSION['member_login'])==false)
-{
-	print 'ようこそゲスト様　';
-	print '<a href="member_login.html">会員ログイン</a><br />';
-	print '<br />';
-}
-else
-{
-	print 'ようこそ';
-	print $_SESSION['member_name'];
-	print '様　';
-	print '<a href="member_logout.php">ログアウト</a><br />';
-	print '<br />';
-}*/
 ?>
 
 <!DOCTYPE html>
@@ -46,27 +32,7 @@ $okflg=true;
 
 print '注文内容をご確認ください<br />';
 
-/*if($onamae=='')
-{
-	print '名前が入力されていません。<br />';
-}
-else
-{
-	print '名前:';
-	print $onamae;
-	print '<br />';
-}
 
-if($email=='')
-{
-	print 'メールアドレスが入力されていません。<br />';
-}
-else
-{
-	print 'メールアドレス:';
-	print $email;
-	print '<br />';
-}*/
 
 	if(isset($_SESSION['cart'])==true)
 	{
@@ -104,12 +70,7 @@ else
 		print '¥';
 		print $price.' - ';
 		print '数量:';				
-		//print '  ';
 		print $suryo.'<br/>';
-		//print '';
-		//print $shokei.'円<br/>';
-		//print '';
-		
 	}
 	print '<br/>';
 	print '合計￥';
@@ -121,7 +82,6 @@ if(preg_match('/^[0-9]+$/',$postal1)==0)
 }
 else
 {
-	//print '郵便番号:';
 	print 'お届け先';
 	print '<br/>〒';
 	print $postal1;
@@ -144,7 +104,6 @@ if($address=='')
 }
 else
 {
-	//print '住所:';
 	print $address;
 	print '<br />';
 }
@@ -155,13 +114,12 @@ if(preg_match('/^[0-9]+$/',$tel)==0)
 }
 else
 {
-	//print '電話番号:';
 	print $tel;
 	print '<br />';
 }
 if($chumon=='chumontouroku')
 {
-	if($pass=='')
+	if($pass1=='')
 	{
 		print 'パスワードが入力されていません。<br /><br />';
 		$okflg=false;
@@ -173,21 +131,6 @@ if($chumon=='chumontouroku')
 		$okflg=false;
 	}
 
-	print '性別<br />';
-	if($danjo=='dan')
-	{
-		print '男性';
-	}
-	else
-	{
-		print '女性';
-	}
-	print '<br /><br />';
-
-	print '生まれ年<br />';
-	print $birth;
-	print '年代';
-	print '<br /><br />';
 }
 print '<br />';
 

@@ -20,17 +20,12 @@ $postal1=$post['postal1'];
 $postal2=$post['postal2'];
 $address=$post['address'];
 $tel=$post['tel'];
-$chumon=$post['chumon'];
-$pass1=$post['pass1'];
-$pass2=$post['pass2'];
-$danjo=$post['danjo'];
-$birth=$post['birth'];
 
 $okflg=true;
 
 if($okflg==true)
 {
-	print '<form method="post" action="check.php">';
+	print '<form method="post" action="kantan_check.php">';
 	print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 	print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 	print '<input type="hidden" name="email" value="'.$email.'">';
@@ -38,17 +33,11 @@ if($okflg==true)
 	print '<input type="hidden" name="postal2" value="'.$postal2.'">';
 	print '<input type="hidden" name="address" value="'.$address.'">';
 	print '<input type="hidden" name="tel" value="'.$tel.'">';
-	print '<input type="hidden" name="chumon" value="'.$chumon.'">';
-	print '<input type="hidden" name="pass1" value="'.$pass1.'">';
-	print '<input type="hidden" name="pass2" value="'.$pass2.'">';
-	print '<input type="hidden" name="danjo" value="'.$danjo.'">';
-	print '<input type="hidden" name="birth" value="'.$birth.'">';
-
 	
-	print '<input type="submit" name="pay" value="代引き支払い"style="margin:50px; float:left; width:400px;height:400px">';//new
+	print '<input type="submit" name="daibiki" value="代引き支払い"style="margin:50px; float:left; width:400px;height:400px">';//new
 	print '</form>';
 
-	print '<form method="post" action="check1.php">';
+	print '<form method="post" action="kantan_check1.php">';
 	print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 	print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 	print '<input type="hidden" name="email" value="'.$email.'">';
@@ -56,14 +45,9 @@ if($okflg==true)
 	print '<input type="hidden" name="postal2" value="'.$postal2.'">';
 	print '<input type="hidden" name="address" value="'.$address.'">';
 	print '<input type="hidden" name="tel" value="'.$tel.'">';
-	print '<input type="hidden" name="chumon" value="'.$chumon.'">';
-	print '<input type="hidden" name="pass1" value="'.$pass1.'">';
-	print '<input type="hidden" name="pass2" value="'.$pass2.'">';
-	print '<input type="hidden" name="danjo" value="'.$danjo.'">';
-	print '<input type="hidden" name="birth" value="'.$birth.'">';
 
 
-	print '<input type="submit" name="pay" value="コンビニ支払い"style="margin:50px; float:left; width:400px;height:400px">';
+	print '<input type="submit" name="konbini" value="コンビニ支払い"style="margin:50px; float:left; width:400px;height:400px">';
 	print '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
 	print '<input type="button" onclick="history.back()" value="戻る"style="margin:50px">';
 	//print '<input type="submit" value="OK"><br />';
