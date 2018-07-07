@@ -1,6 +1,20 @@
 <?php
 session_start();
 session_regenerate_id(true);
+/*if(isset($_SESSION['member_login'])==false)
+{
+	print 'ようこそゲスト様　';
+	print '<a href="member_login.html">会員ログイン</a><br />';
+	print '<br />';
+}
+else
+{
+	print 'ようこそ';
+	print $_SESSION['member_name'];
+	print '様　';
+	print '<a href="member_logout.php">ログアウト</a><br />';
+	print '<br />';
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -22,18 +36,33 @@ $postal1=$post['postal1'];
 $postal2=$post['postal2'];
 $address=$post['address'];
 $tel=$post['tel'];
-$chumon=$post['chumon'];
-$pass1=$post['pass1'];
-$pass2=$post['pass2'];
-$danjo=$post['danjo'];
-$birth=$post['birth'];
 
 $okflg=true;
 
 print '注文内容をご確認ください<br />';
 
+/*if($onamae=='')
+{
+	print '名前が入力されていません。<br />';
+}
+else
+{
+	print '名前:';
+	print $onamae;
+	print '<br />';
+}
 
-	
+if($email=='')
+{
+	print 'メールアドレスが入力されていません。<br />';
+}
+else
+{
+	print 'メールアドレス:';
+	print $email;
+	print '<br />';
+}*/
+
 	if(isset($_SESSION['cart'])==true)
 	{
 		$cart=$_SESSION['cart'];
@@ -76,13 +105,12 @@ print '注文内容をご確認ください<br />';
 		//print $shokei.'円<br/>';
 		//print '';
 		
-		
 	}
 	print '<br/>';
 	print '合計￥';
 	print $Gokei.'<br/><br/>';
-	
-	if(preg_match('/^[0-9]+$/',$postal1)==0)
+
+if(preg_match('/^[0-9]+$/',$postal1)==0)
 {
 	print '郵便番号をきちんと入力してください。<br />';
 }
@@ -126,20 +154,6 @@ else
 	print $tel;
 	print '<br />';
 }
-if($chumon=='chumontouroku')
-{
-	if($pass1=='')
-	{
-		print 'パスワードが入力されていません。<br /><br />';
-		$okflg=false;
-	}
-
-	if($pass1!=$pass2)
-	{
-		print 'パスワードが一致しません。<br /><br />';
-		$okflg=false;
-	}
-
 	/*print '性別<br />';
 	if($danjo=='dan')
 	{
@@ -155,24 +169,17 @@ if($chumon=='chumontouroku')
 	print $birth;
 	print '年代';
 	print '<br /><br />';*/
-}
+
 print '<br />';
 
-
-
 if($okflg=true){
-	print '<form method="post" action="done1.php">';
+	print '<form method="post" action="shop_kantan_done1.php">';
 	print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 	print '<input type="hidden" name="email" value="'.$email.'">';
 	print '<input type="hidden" name="postal1" value="'.$postal1.'">';
 	print '<input type="hidden" name="postal2" value="'.$postal2.'">';
 	print '<input type="hidden" name="address" value="'.$address.'">';
 	print '<input type="hidden" name="tel" value="'.$tel.'">';
-	print '<input type="hidden" name="chumon" value="'.$chumon.'">';
-	print '<input type="hidden" name="pass1" value="'.$pass1.'">';
-	print '<input type="hidden" name="pass2" value="'.$pass2.'">';
-	print '<input type="hidden" name="danjo" value="'.$danjo.'">';
-	print '<input type="hidden" name="birth" value="'.$birth.'">';
 	print '<input type="button" onclick="history.back()" value="戻る">';
 	print '<input type="submit" value="ＯＫ"><br />';
 	print '</form>';

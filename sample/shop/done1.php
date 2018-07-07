@@ -13,26 +13,17 @@
 <?php
 
 
+$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+$user='root';
+$password='';
 
 try
 {
 	require_once('../common/common.php');
 
-	if (DEBUG) {
-		$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-		$user='root';
-		$password='';
-		$dbh=new PDO($dsn,$user,$password);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		}
-		else{
-		$dbServer = '127.0.0.1';
-		$dbUser = $_SERVER['MYSQL_USER'];
-		$dbPass = $_SERVER['MYSQL_PASSWORD'];
-		$dbName = $_SERVER['MYSQL_DB'];
-		$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-		$dbh = new PDO($dsn, $dbUser, $dbPass);
-		}
+$dbh=new PDO($dsn,$user,$password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
 $sql='select*from dat_sales_product';
 $stmt=$dbh->prepare($sql);
 $data=array();
@@ -60,7 +51,7 @@ $danjo=$post['danjo'];
 $birth=$post['birth'];
 $lastmembercode=$rec['dat_sales_product'];
 
-//print $onamae.'様<br />';
+print $onamae.'様<br />';
 print '<br/>ご注文ありがとうござました。<br />';
 //print $email.'にメールを送りましたのでご確認ください。<br />';
 print 'お近くのファミリーマートでお支払い頂けます。<br />';
@@ -71,16 +62,21 @@ print '<br />';
 //print 'お支払い期限:平成30年8月20日 23:59<br />';
 print '企業コード:50050<br />';
 
-
-print '注文番号:';
+$str="";
+for($i=0;$i<12;$i++){
+    $str.=mt_rand(0,9);
+}
+print '注文番号:'.$str;
 //echo sha1(uniqid(null,true));
 //echo uniqid();
-echo str_pad($lastmembercode,12,0,STR_PAD_LEFT);
+
+//echo str_pad($lastmembercode,12,0,STR_PAD_LEFT);
 print '<br />';
 print '引き続きショッピングをお楽しみ下さい。<br />';
 //print $postal1.'-'.$postal2.'<br />';
 //print $address.'<br />';
 //print $tel.'<br />';
+
 
 $honbun='';
 $honbun.=$onamae."様\n\nこの度はご注文ありがとうございました。\n";
@@ -92,21 +88,11 @@ $cart=$_SESSION['cart'];
 $kazu=$_SESSION['kazu'];
 $max=count($cart);
 
-if (DEBUG) {
-	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-	$user='root';
-	$password='';
-	$dbh=new PDO($dsn,$user,$password);
-	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	}
-	else{
-	$dbServer = '127.0.0.1';
-	$dbUser = $_SERVER['MYSQL_USER'];
-	$dbPass = $_SERVER['MYSQL_PASSWORD'];
-	$dbName = $_SERVER['MYSQL_DB'];
-	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-	$dbh = new PDO($dsn, $dbUser, $dbPass);
-	}
+$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+$user='root';
+$password='';
+$dbh=new PDO($dsn,$user,$password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 for($i=0;$i<$max;$i++)
 {
@@ -139,7 +125,7 @@ if($chumon=='chumontouroku')
 	$sql='INSERT INTO dat_member (password,name,email,postal1,postal2,address,tel,danjo,born) VALUES (?,?,?,?,?,?,?,?,?)';
 	$stmt=$dbh->prepare($sql);
 	$data=array();
-	$data[]=md5($pass);
+	$data[]=md5($pass1);
 	$data[]=$onamae;
 	$data[]=$email;
 	$data[]=$postal1;
@@ -184,13 +170,14 @@ $lastcode=$rec['LAST_INSERT_ID()'];
 
 for($i=0;$i<$max;$i++)
 {
-	$sql='INSERT INTO dat_sales_product (code_sales,code_product,price,quantity) VALUES (?,?,?,?)';
+	$sql='INSERT INTO dat_sales_product (code_sales,code_product,price,quantity,paycode) VALUES (?,?,?,?,?)';
 	$stmt=$dbh->prepare($sql);
 	$data=array();
 	$data[]=$lastcode;
 	$data[]=$cart[$i];
 	$data[]=$kakaku[$i];
 	$data[]=$kazu[$i];
+	$data[]=$str;
 	$stmt->execute($data);
 }
 

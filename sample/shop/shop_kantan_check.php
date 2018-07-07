@@ -23,21 +23,11 @@ require_once('../common/common.php');
 
 $code=$_SESSION['member_code'];
 
-if (DEBUG) {
-	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-	$user='root';
-	$password='';
-	$dbh=new PDO($dsn,$user,$password);
-	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	}
-	else{
-	$dbServer = '127.0.0.1';
-	$dbUser = $_SERVER['MYSQL_USER'];
-	$dbPass = $_SERVER['MYSQL_PASSWORD'];
-	$dbName = $_SERVER['MYSQL_DB'];
-	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-	$dbh = new PDO($dsn, $dbUser, $dbPass);
-	}
+$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+$user='root';
+$password='';
+$dbh=new PDO($dsn,$user,$password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 $sql='SELECT name,email,postal1,postal2,address,tel FROM dat_member WHERE code=?';
 $stmt=$dbh->prepare($sql);
@@ -76,7 +66,7 @@ print '電話番号<br />';
 print $tel;	
 print '<br /><br />';
 
-print '<form method="post" action="shop_kantan_done.php">';
+print '<form method="post" action="shop_kantan_check_.php">';
 print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 print '<input type="hidden" name="email" value="'.$email.'">';
 print '<input type="hidden" name="postal1" value="'.$postal1.'">';
