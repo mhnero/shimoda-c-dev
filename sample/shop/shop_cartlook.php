@@ -134,7 +134,7 @@ catch(Exception $e)
 <?php
 	if(isset($_SESSION["member_login"])==true)
 	{
-		print '<a href="shop_form_check_.php">会員かんたん注文へ進む</a><br />';
+		print '<a href="shop_form_check.php">会員かんたん注文へ進む</a><br />';
 	}
 ?>
 
