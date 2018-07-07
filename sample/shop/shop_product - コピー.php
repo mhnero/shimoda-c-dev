@@ -21,6 +21,7 @@ else
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="img.css" rel="stylesheet" type="text/css">
 <title>ろくまる農園</title>
 </head>
 <body>

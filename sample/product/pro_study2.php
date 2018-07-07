@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="img.css" rel="stylesheet" type="text/css">
 <title>勉強会</title>
 </head>
 <body>
