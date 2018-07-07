@@ -63,14 +63,14 @@ print '<br />';
 print '企業コード:50050<br />';
 
 $str="";
-for($i=0;$i<12;$i++){
+for($i=0;$i<9;$i++){
     $str.=mt_rand(0,9);
 }
-print '注文番号:'.$str;
+print '注文番号:';
 //echo sha1(uniqid(null,true));
 //echo uniqid();
 
-//echo str_pad($lastmembercode,12,0,STR_PAD_LEFT);
+echo str_pad($str,12,0,STR_PAD_LEFT);
 print '<br />';
 print '引き続きショッピングをお楽しみ下さい。<br />';
 //print $postal1.'-'.$postal2.'<br />';

@@ -112,7 +112,7 @@ if($chumon=='chumontouroku')
 	$sql='INSERT INTO dat_member (password,name,email,postal1,postal2,address,tel,danjo,born) VALUES (?,?,?,?,?,?,?,?,?)';
 	$stmt=$dbh->prepare($sql);
 	$data=array();
-	$data[]=md5($pass);
+	$data[]=md5($pass1);
 	$data[]=$onamae;
 	$data[]=$email;
 	$data[]=$postal1;
