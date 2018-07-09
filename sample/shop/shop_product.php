@@ -22,6 +22,7 @@ else
 <head>
 <meta charset="UTF-8">
 <link href="img.css" rel="stylesheet" type="text/css">
+<link href="pro.css" rel="stylesheet" type="text/css">
 <title>アクセサリ販売システム</title>
 </head>
 <body>
@@ -50,9 +51,9 @@ if (DEBUG) {
 	$dbh = new PDO($dsn, $dbUser, $dbPass);
 	}
 
-$sql='SELECT name,price,gazou FROM mst_product WHERE code=?';
-$stmt=$dbh->prepare($sql);
 $data[]=$pro_code;
+$sql='SELECT name,price,gazou,type,seisan FROM mst_product WHERE code=?';
+$stmt=$dbh->prepare($sql);
 $stmt->execute($data);
 
 $sql2='SELECT name,score,comment FROM mst_review WHERE code=?';
@@ -63,6 +64,8 @@ $rec=$stmt->fetch(PDO::FETCH_ASSOC);
 $pro_name=$rec['name'];
 $pro_price=$rec['price'];
 $pro_gazou_name=$rec['gazou'];
+$pro_type=$rec['type'];
+$pro_seisan=$rec['seisan'];
 
 $dbh=null;
 
@@ -85,15 +88,22 @@ catch(Exception $e)
 
 商品情報参照<br />
 <br />
+<div id="king">
 商品コード<br />
-<?php print $pro_code; ?>
-<br />
 商品名<br />
-<?php print $pro_name; ?>
-<br />
 価格<br />
-<?php print $pro_price; ?>円
+種類<br />
+生産国<br />
+</div>
+
+<div id="queen">
+ : <?php print $pro_code; ?><br />
+ : <?php print $pro_name; ?><br />
+ : <?php print $pro_price; ?>円<br/>
+ : <?php print $pro_type; ?><br />
+ : <?php print $pro_seisan; ?>
 <br />
+</div>
 <?php print $disp_gazou; ?>
 <br />
 <br />

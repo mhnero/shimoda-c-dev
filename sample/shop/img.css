@@ -3,3 +3,8 @@ img{
   width: 150px; height: 150px;
   object-fit: contain;
 }
+
+
+#king , #queen {
+  display : table-cell;
+}
