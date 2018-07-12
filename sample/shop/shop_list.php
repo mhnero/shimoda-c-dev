@@ -156,89 +156,58 @@ arsort($array01);
 <table>
 <tr>
 <td>
-<table border="1">
-<tr><td>
   <?php
-//売上1位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
+  $value=0;
+	$value1=0;
+	$value2=0;
+  for ($i = 0; $i < 3; $i++){?>
+  <table border="1">
+  <tr><td>
+  <?php
+	//ポインタ取得
+	$key=key($array01);
+	if($i==0){
+	$value=current($array01);
+	}elseif($i==1){
+	$value1=current($array01);
+  }else{
+  $value2=current($array01);
+  }
+	//ポインタを進める（次のデータ表示のための準備）
+	next($array01);
+	$j=$i+1;
+		//表示
+		print '<a href="shop_product.php?procode='.$p_code[$key].'">';
+    print '<br />';
+    if($p_gazou[$key]=='')
+    {
+	    $disp_gazou='';
+    }
+    else
+    {
+	    $disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
+    }
 
          print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.1！';?></tr></td>
-         
-        </td>
-        </table>
-        <?php print '<br /><br />'; 
-//売上2位
-next($array01);
-?>
-<td>
-<table border="1">
-<tr><td>
-  <?php
-//売上2位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
-
-         print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.2！';?></tr></td>
-         
-        </td>
-        </table>
-       
-        <?php print '<br /><br />';        
-//売上3位
-next($array01);
-?>
-<td>
-<table border="1">
-<tr><td>
-  <?php
-//売上3位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
-
-         print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.3！';?></tr></td>
-         
-        </td>
-        </table>
-        <?php print '<br /><br />';  ?>
+         <tr><td><?php print $p_name[$key].'';?></tr><td>
+         <tr><td><?php print '人気No.';
+         if($j==1){
+         print_r($j);}elseif($value==$value1&&$j==2){
+         print '1';}elseif($value==$value2&&$j==3){
+         print '1';}elseif($value1==$value2){
+         print '2';}else{
+         print_r($j);}
+         print '！';?></tr><td>
+         </td>
+        </table> 
+        <td>
+        
+        <?php  
+}?>
         </td>
         </tr>
         </table>
 <br /><br /> 
-
 
 
 <?php
@@ -373,90 +342,58 @@ arsort($array01);
 <table>
 <tr>
 <td>
-<table border="1">
-<tr><td>
   <?php
-//売上1位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
+  $value=0;
+	$value1=0;
+	$value2=0;
+  for ($i = 0; $i < 3; $i++){?>
+  <table border="1">
+  <tr><td>
+  <?php
+	//ポインタ取得
+	$key=key($array01);
+	if($i==0){
+	$value=current($array01);
+	}elseif($i==1){
+	$value1=current($array01);
+  }else{
+  $value2=current($array01);
+  }
+	//ポインタを進める（次のデータ表示のための準備）
+	next($array01);
+	$j=$i+1;
+		//表示
+		print '<a href="shop_product.php?procode='.$p_code[$key].'">';
+    print '<br />';
+    if($p_gazou[$key]=='')
+    {
+	    $disp_gazou='';
+    }
+    else
+    {
+	    $disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
+    }
 
          print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.1！';?></tr></td>
-         
-        </td>
-        </table>
-        <?php print '<br /><br />'; 
-//売上2位
-next($array01);
-?>
-<td>
-<table border="1">
-<tr><td>
-  <?php
-//売上2位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
-
-         print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.2！';?></tr></td>
-         
-        </td>
-        </table>
-       
-        <?php print '<br /><br />';        
-//売上3位
-next($array01);
-?>
-<td>
-<table border="1">
-<tr><td>
-  <?php
-//売上3位
-$key=key($array01);
-print '<a href="shop_product.php?procode='.$p_code[$key].'">';
-print '<br />';
-if($p_gazou[$key]=='')
-{
-	$disp_gazou='';
-}
-else
-{
-	$disp_gazou='<img src="../product/gazou/'.$p_gazou[$key].'">';
-}
-
-         print $disp_gazou.'</a><br />'; ?></tr><td>
-         <tr><td><?php print $p_name[$key].'';?> </tr><td>
-         <tr><td><?php print '人気No.3！';?></tr></td>
-         
-        </td>
-        </table>
-        <?php print '<br /><br />';  ?>
+         <tr><td><?php print $p_name[$key].'';?></tr><td>
+         <tr><td><?php print '人気No.';
+         if($j==1){
+         print_r($j);}elseif($value==$value1&&$j==2){
+         print '1';}elseif($value==$value2&&$j==3){
+         print '1';}elseif($value1==$value2){
+         print '2';}else{
+         print_r($j);}
+         print '！';?></tr><td>
+         </td>
+        </table> 
+        <td>
+        
+        <?php  
+}?>
         </td>
         </tr>
         </table>
 <br /><br /> 
-
-
 
 <?php
 
