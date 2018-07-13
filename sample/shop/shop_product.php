@@ -126,7 +126,7 @@ while(true)
 }
 ?>
 <form>
-<input type="button" onclick="history.back()" value="戻る">
+<a href="pro_list.php">戻る</a>
 </form>
 
 </body>

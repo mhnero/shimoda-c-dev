@@ -417,7 +417,7 @@ if (DEBUG) {
 	$dbh = new PDO($dsn, $dbUser, $dbPass);
 	}
 
-$sql='SELECT code,name,price,type,seisan,pricelevel
+$sql='SELECT code,name,price,type,seisan
 FROM mst_product WHERE 1';
 
 
@@ -428,7 +428,8 @@ $stmt->execute();
 $dbh=null;
 
 if($keyword==''){
-
+if($pricelevel=='z'){
+	
 	while(true)
 	{
 		$rec=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -440,8 +441,7 @@ if($keyword==''){
 			break;
 		}
 		if((strpos($rec['type'],$type)!==false)
-		&&(strpos($rec['seisan'],$seisan)!==false)
-		&&(strpos($rec['pricelevel'],$pricelevel)!==false))
+		&&(strpos($rec['seisan'],$seisan)!==false))
 		{
 		print '<a href="shop_product.php?procode='.$rec['code'].'">';
 		print $rec['name'].'─';
@@ -450,34 +450,155 @@ if($keyword==''){
 		print '<br />';
 		$_x=1;
 		}
+		}
+}
+	else{
+	while(true)
+	{
+		$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+		if($rec==false)
+		{
+			if($_x==0){
+				print '該当の商品はありません';	
+			}
+			break;
+		}
+		if($pricelevel=='a')
+		{
+		if((strpos($rec['type'],$type)!==false)
+		&&(strpos($rec['seisan'],$seisan)!==false)
+		&&($rec['price']<1500))
+		{
+		print '<a href="shop_product.php?procode='.$rec['code'].'">';
+		print $rec['name'].'─';
+		print $rec['price'].'円';
+		print '</a>';
+		print '<br />';
+		$_x=1;
+		}
+		}
+
+
+		if($pricelevel=='b')
+		{
+		if((strpos($rec['type'],$type)!==false)
+		&&(strpos($rec['seisan'],$seisan)!==false)
+		&&(1500<=$rec['price'])
+		&&($rec['price']>3000))
+		{
+		print '<a href="shop_product.php?procode='.$rec['code'].'">';
+		print $rec['name'].'─';
+		print $rec['price'].'円';
+		print '</a>';
+		print '<br />';
+		$_x=1;
+		}
+		}
+
+		
+		if($pricelevel=='c')
+		{
+		if((strpos($rec['type'],$type)!==false)
+		&&(strpos($rec['seisan'],$seisan)!==false)
+		&&($rec['price']>=3000))
+		{
+		print '<a href="shop_product.php?procode='.$rec['code'].'">';
+		print $rec['name'].'─';
+		print $rec['price'].'円';
+		print '</a>';
+		print '<br />';
+		$_x=1;
+		}
+		}
+	}
 	}
 }
-
 else{
 	
-while(true)
-{
-	$rec=$stmt->fetch(PDO::FETCH_ASSOC);
-	if($rec==false)
-	{
-		if($_x==0){
-			print '該当の商品はありません';			
+	if($pricelevel=='z'){
+	
+		while(true)
+		{
+			$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($rec==false)
+			{
+				if($_x==0){
+					print '該当の商品はありません';	
+				}
+				break;
+			}
+			if((strpos($rec['type'],$type)!==false)
+			&&(strpos($rec['seisan'],$seisan)!==false))
+			{
+			print '<a href="shop_product.php?procode='.$rec['code'].'">';
+			print $rec['name'].'─';
+			print $rec['price'].'円';
+			print '</a>';
+			print '<br />';
+			$_x=1;
+			}
+			}
+	}
+		else{
+		while(true)
+		{
+			$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($rec==false)
+			{
+				if($_x==0){
+					print '該当の商品はありません';	
+				}
+				break;
+			}
+			if($pricelevel=='a')
+			{
+			if((strpos($rec['type'],$type)!==false)
+			&&(strpos($rec['seisan'],$seisan)!==false)
+			&&($rec['price']<1500))
+			{
+			print '<a href="shop_product.php?procode='.$rec['code'].'">';
+			print $rec['name'].'─';
+			print $rec['price'].'円';
+			print '</a>';
+			print '<br />';
+			$_x=1;
+			}
+			}
+	
+	
+			if($pricelevel=='b')
+			{
+			if((strpos($rec['type'],$type)!==false)
+			&&(strpos($rec['seisan'],$seisan)!==false)
+			&&(1500<=$rec['price'])
+			&&($rec['price']>3000))
+			{
+			print '<a href="shop_product.php?procode='.$rec['code'].'">';
+			print $rec['name'].'─';
+			print $rec['price'].'円';
+			print '</a>';
+			print '<br />';
+			$_x=1;
+			}
+			}
+	
+			
+			if($pricelevel=='c')
+			{
+			if((strpos($rec['type'],$type)!==false)
+			&&(strpos($rec['seisan'],$seisan)!==false)
+			&&($rec['price']>=3000))
+			{
+			print '<a href="shop_product.php?procode='.$rec['code'].'">';
+			print $rec['name'].'─';
+			print $rec['price'].'円';
+			print '</a>';
+			print '<br />';
+			$_x=1;
+			}
+			}
 		}
-		break;
-	}
-	if((strpos($rec['type'],$type)!==false)
-	&&(strpos($rec['seisan'],$seisan)!==false)
-	&&(strpos($rec['pricelevel'],$pricelevel)!==false)
-	&&(strpos($rec['name'],$keyword)!==false))
-	{
-	print '<a href="shop_product.php?procode='.$rec['code'].'">';
-	print $rec['name'].'─';
-	print $rec['price'].'円';
-	print '</a>';
-	print '<br />';
-	$_x=1;
-	}
-}
+		}
 }
 
 print '<br />';

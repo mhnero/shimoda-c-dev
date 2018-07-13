@@ -36,7 +36,6 @@ $pro_price=$post['price'];
 $pro_gazou_name=$post['gazou_name'];
 $pro_type=$post['type'];
 $pro_seisan=$post['seisan'];
-$pro_pricelevel=$post['pricelevel'];
 
 if (DEBUG) {
 	$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
@@ -54,14 +53,13 @@ if (DEBUG) {
 	$dbh = new PDO($dsn, $dbUser, $dbPass);
 	}
 
-$sql='INSERT INTO mst_product(name,price,gazou,type,seisan,pricelevel) VALUES (?,?,?,?,?,?)';
+$sql='INSERT INTO mst_product(name,price,gazou,type,seisan) VALUES (?,?,?,?,?)';
 $stmt=$dbh->prepare($sql);
 $data[]=$pro_name;
 $data[]=$pro_price;
 $data[]=$pro_gazou_name;
 $data[]=$pro_type;
 $data[]=$pro_seisan;
-$data[]=$pro_pricelevel;
 $stmt->execute($data);
 
 $dbh=null;

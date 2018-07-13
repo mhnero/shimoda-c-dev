@@ -34,7 +34,6 @@ $pro_price=$post['price'];
 $pro_gazou=$_FILES['gazou'];
 $pro_type=$post['type'];
 $pro_seisan=$post['seisan'];
-$pro_pricelevel=$post['pricelevel'];
 
 
 if($pro_name=='')
@@ -89,7 +88,6 @@ else
 	print '<br />';
 	print '<input type="hidden" name="type" value="'.$pro_type.'">';
 	print '<input type="hidden" name="seisan" value="'.$pro_seisan.'">';
-	print '<input type="hidden" name="pricelevel" value="'.$pro_pricelevel .'">';
 	print '<input type="button" onclick="history.back()" value="戻る">';
 	print '<input type="submit" value="ＯＫ">';
 	print '</form>';

@@ -37,8 +37,7 @@ require_once('../common/common.php');
 画像を選んでください。<br />
 <input type="file" name="gazou" style="width:400px"><br /><br/>
 <?php pulldown_type(); ?>&nbsp;
-<?php pulldown_seisan(); ?>&nbsp;
-<?php pulldown_pricelevel(); ?><br/>
+<?php pulldown_seisan(); ?>&nbsp;><br/>
 <br />
 <input type="button" onclick="history.back()" value="戻る">
 <input type="submit" value="ＯＫ">
