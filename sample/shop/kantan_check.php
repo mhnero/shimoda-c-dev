@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter('none');
 session_start();
 session_regenerate_id(true);
 /*if(isset($_SESSION['member_login'])==false)

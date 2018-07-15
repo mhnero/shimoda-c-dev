@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter('none');
 session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['member_login'])==false)
@@ -32,15 +33,52 @@ require_once('../common/common.php');
 
 商品一覧<br />
 <br />
-<form method="post" action="shop_list.php"><br/>
-<?php pulldown_type(); ?>&nbsp;
-<?php pulldown_seisan(); ?>&nbsp;
-<?php pulldown_pricelevel(); ?><br/><br/>
+<?php
+$sel1 = isset($_POST['type']) ? $_POST['type'] : '';
+$sel2 = isset($_POST['seisan']) ? $_POST['seisan'] : '';
+$sel3 = isset($_POST['pricelevel']) ? $_POST['pricelevel'] : '';
+?>
+<html>
+<!--
+	<form method="post" action="shop_list.php"><br/>
+	<?php //pulldown_type(); ?>&nbsp;
+	<?php //pulldown_seisan(); ?>&nbsp;
+	<?php //pulldown_pricelevel(); ?><br/><br/>
+	<input type="hidden" name="search" value="search"/><br />
+	<input type="text" name="keyword" style="width:300px">
+	<input type="submit"  value="検索" >
+	</form>
+-->
+
+<form method="post" action="shop_list.php">
+
+
+<select name="type">
+<option value=" "<?= $sel1 === ' ' ? ' selected' : ''; ?>>種類(指定なし)</option>
+<option value="ケース "<?= $sel1 === 'ケース ' ? ' selected' : ''; ?>>ケース </option>
+<option value="液晶保護フィルム "<?= $sel1 === '液晶保護フィルム ' ? ' selected' : ''; ?>>液晶保護フィルム</option>
+<option value="イヤホンジャック "<?= $sel1 === 'イヤホンジャック ' ? ' selected' : ''; ?>>イヤホンジャック</option>
+</select>
+
+<select name="seisan">
+<option value=" "<?= $sel2 === ' ' ? ' selected' : ''; ?>>生産国(指定なし)</option>
+<option value="日本 "<?= $sel2 === '日本 ' ? ' selected' : ''; ?>>日本</option>
+<option value="中国 "<?= $sel2 === '中国 ' ? ' selected' : ''; ?>>中国</option>
+<option value="米国 "<?= $sel2 === '米国 ' ? ' selected' : ''; ?>>米国</option>
+</select>
+
+<select name="pricelevel">
+<option value="z"<?= $sel3 === 'z' ? ' selected' : ''; ?>>価格帯(指定なし)</option>
+<option value="c"<?= $sel3 === 'c' ? ' selected' : ''; ?>>3,000円～</option>
+<option value="b"<?= $sel3 === 'b' ? ' selected' : ''; ?>>1,500～2,999円</option>
+<option value="a"<?= $sel3 === 'a' ? ' selected' : ''; ?>>～1,499</option>
+</select>
+
+
 <input type="hidden" name="search" value="search"/><br />
 <input type="text" name="keyword" style="width:300px">
 <input type="submit"  value="検索" >
 </form>
-
 <?php
 
 try

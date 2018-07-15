@@ -52,6 +52,7 @@ if($rec==false)
 }
 else
 {
+	session_cache_limiter('none');
 	session_start();
 	$_SESSION['login']=1;
 	$_SESSION['staff_code']=$staff_code;

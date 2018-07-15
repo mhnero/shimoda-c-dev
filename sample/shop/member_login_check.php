@@ -52,6 +52,7 @@ if($rec==false)
 }
 else
 {
+	session_cache_limiter('none');
 	session_start();
 	$_SESSION['member_login']=1;
 	$_SESSION['member_code']=$rec['code'];
