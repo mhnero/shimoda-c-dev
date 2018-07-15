@@ -12,7 +12,7 @@ session_destroy();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ろくまる農園</title>
+<title>スマートフォンアクセサリー販売システム</title>
 </head>
 <body>
 

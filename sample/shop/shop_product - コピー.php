@@ -22,7 +22,7 @@ else
 <head>
 <meta charset="UTF-8">
 <link href="img.css" rel="stylesheet" type="text/css">
-<title>ろくまる農園</title>
+<title>スマートフォンアクセサリー販売システム</title>
 </head>
 <body>
 

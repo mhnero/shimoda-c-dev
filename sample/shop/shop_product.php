@@ -126,7 +126,7 @@ while(true)
 }
 ?>
 <form>
-<a href="pro_list.php">戻る</a>
+<a href="shop_list.php">戻る</a>
 </form>
 
 </body>

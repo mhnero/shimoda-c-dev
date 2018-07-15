@@ -125,9 +125,9 @@ function pulldown_pricelevel()
 {
 	print '<select name="pricelevel" style=width:130px;>';
 	print '<option value="z">価格帯(指定なし)</option>';
-	print '<option value="a">3000円～</option>';
-	print '<option value="b">1500～2999円</option>';
-	print '<option value="c">～1499円</option>';
+	print '<option value="c">3,000円～</option>';
+	print '<option value="b">1,500～2,999円</option>';
+	print '<option value="a">～1,499円</option>';
 	print '</select>';
 }
 

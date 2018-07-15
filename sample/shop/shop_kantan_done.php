@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ろくまる農園</title>
+<title>スマートフォンアクセサリー販売システム</title>
 </head>
 <body>
 
@@ -139,7 +139,7 @@ $honbun.="入金確認が取れ次第、梱包、発送させていただきま�
 $honbun.="\n";
 
 $honbun.="□□□□□□□□□□□□□□\n";
-$honbun.="　～安心野菜のろくまる農園～\n";
+$honbun.="　～安心野菜のスマートフォンアクセサリー販売システム～\n";
 $honbun.="\n";
 $honbun.="○○県六丸郡六丸村123-4\n";
 $honbun.="電話 090-6060-xxxx\n";

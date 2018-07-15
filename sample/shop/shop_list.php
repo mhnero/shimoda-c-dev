@@ -22,7 +22,7 @@ else
 <head>
 <meta charset="UTF-8">
 <link href="img.css" rel="stylesheet" type="text/css">
-<title>勉強会</title>
+<title>スマートフォンアクセサリー販売システム</title>
 </head>
 <body>
 
@@ -484,7 +484,7 @@ if($pricelevel=='z'){
 		if((strpos($rec['type'],$type)!==false)
 		&&(strpos($rec['seisan'],$seisan)!==false)
 		&&(1500<=$rec['price'])
-		&&($rec['price']>3000))
+		&&($rec['price']<3000))
 		{
 		print '<a href="shop_product.php?procode='.$rec['code'].'">';
 		print $rec['name'].'─';
@@ -528,7 +528,8 @@ else{
 				break;
 			}
 			if((strpos($rec['type'],$type)!==false)
-			&&(strpos($rec['seisan'],$seisan)!==false))
+			&&(strpos($rec['seisan'],$seisan)!==false)
+			&&(strpos($rec['name'],$keyword)!==false))
 			{
 			print '<a href="shop_product.php?procode='.$rec['code'].'">';
 			print $rec['name'].'─';
@@ -554,7 +555,8 @@ else{
 			{
 			if((strpos($rec['type'],$type)!==false)
 			&&(strpos($rec['seisan'],$seisan)!==false)
-			&&($rec['price']<1500))
+			&&($rec['price']<1500)
+			&&(strpos($rec['name'],$keyword)!==false))
 			{
 			print '<a href="shop_product.php?procode='.$rec['code'].'">';
 			print $rec['name'].'─';
@@ -571,7 +573,8 @@ else{
 			if((strpos($rec['type'],$type)!==false)
 			&&(strpos($rec['seisan'],$seisan)!==false)
 			&&(1500<=$rec['price'])
-			&&($rec['price']>3000))
+			&&($rec['price']<3000)
+			&&(strpos($rec['name'],$keyword)!==false))
 			{
 			print '<a href="shop_product.php?procode='.$rec['code'].'">';
 			print $rec['name'].'─';
@@ -587,7 +590,8 @@ else{
 			{
 			if((strpos($rec['type'],$type)!==false)
 			&&(strpos($rec['seisan'],$seisan)!==false)
-			&&($rec['price']>=3000))
+			&&($rec['price']>=3000)
+			&&(strpos($rec['name'],$keyword)!==false))
 			{
 			print '<a href="shop_product.php?procode='.$rec['code'].'">';
 			print $rec['name'].'─';
